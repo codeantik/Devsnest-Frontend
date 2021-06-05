@@ -16,7 +16,7 @@
 h1 {
   text-align: center;
   font-size: 3em;
-  background-image: linear-gradient(to bottom, #ce4191, #be50a6, #aa5eb7,      #936ac3, #7a75ca, #6385d7, #4893e0, #26a1e5, #00b9f0, #00d0f5, #22e6f5,   #5ffbf1);
+  background-image: linear-gradient(to bottom, #ce4191, #be50a6, #aa5eb7, #936ac3, #7a75ca, #6385d7, #4893e0, #26a1e5, #00b9f0, #00d0f5, #22e6f5, #5ffbf1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
