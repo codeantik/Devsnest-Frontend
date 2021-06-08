@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" />
-    <script defer src="./script.js"></script>
-    <title>Letter</title>
+    <title>Online Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="wrapper">
-        <h1> Letter </h1>
+    <!-- <h1>Calculator</h1>  -->
+    <form name="calcform" action="index.htm" class="calc" method="POST">
+        <!-- <h1 style="display: inline; margin: -90px 50px 50px 50px"> Calculator </h1> -->
+        <input type="text" id="display" name="answer">
+        <br>
+        <input type="button" class="btnDesign" value="C" onclick="calcform.answer.value=''">
+        <input type="button" class="btnDesign" value="<"
+            onclick="calcform.answer.value=calcform.answer.value.substring(0,calcform.answer.value.length*1-1)">
+        <input type="button" class="btnDesign" value="00" onclick="calcform.answer.value+='00'">
+        <input type="button" class="operator" value="/" onclick="calcform.answer.value+='/'">
+        <br>
 
-        <p><em><strong> Dear Dean, </strong></em></p>
-        <p> This is to inform you that Devsnest is orgainising is a 30 day code camp for beginners. I attended this camp the past month and was overwhelmed by the quality of knowledge I gained during this short time. So, I request you to please grant the permission so that they can organise this camp for the students of the university.</p></br>
-
-        <span> Yours obediently, </span></br>
-        <span> Ankit Singh, </span></br>
-        <span> Unemployed student of the university
-    </div>
+        <input type="button" class="btnDesign" value="7" onclick="calcform.answer.value+='7'">
+        <input type="button" class="btnDesign" value="8" onclick="calcform.answer.value+='8'">
+        <input type="button" class="btnDesign" value="9" onclick="calcform.answer.value+='9'">
+        <input type="button" class="operator" value="*" onclick="calcform.answer.value+='*'">
+        <br>
+        <input type="button" class="btnDesign" value="4" onclick="calcform.answer.value+='4'">
+        <input type="button" class="btnDesign" value="5" onclick="calcform.answer.value+='5'">
+        <input type="button" class="btnDesign" value="6" onclick="calcform.answer.value+='6'">
+        <input type="button" class="operator" value="-" onclick="calcform.answer.value+='-'">
+        <br>
+        <input type="button" class="btnDesign" value="1" onclick="calcform.answer.value+='1'">
+        <input type="button" class="btnDesign" value="2" onclick="calcform.answer.value+='2'">
+        <input type="button" class="btnDesign" value="3" onclick="calcform.answer.value+='3'">
+        <input type="button" class="operator" value="+" onclick="calcform.answer.value+='+'">
+        <br>
+        <input type="button" id="zeroButton" class="hov" value="0" onclick="calcform.answer.value+='0'">
+        <input type="button" class="btnDesign align1" value="." onclick="calcform.answer.value+='.'">
+        <input type="button" class="operator align2" value="=" onclick="calcform.answer.value=eval(calcform.answer.value)">
+    </form>
 </body>
+
 </html>
