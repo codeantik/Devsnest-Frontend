@@ -1,7 +1,7 @@
 // Task 1
 
 // const listProperties = (student) => {
-//     if(typeof(student) != 'object') return []
+//     if(typeof(student) !== 'object') return []
 //     if(Object.keys(student)) return Object.keys(student)
 //     return []
 // }
