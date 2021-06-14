@@ -1,79 +1,113 @@
-// TASK 1
+// Task 1
 
-// const checkArray = (a) => {
-//     console.log(Array.isArray(a))
+// const listProperties = (student) => {
+//     if(typeof(student) != 'object') return []
+//     if(Object.keys(student)) return Object.keys(student)
+//     return []
 // }
 
-// checkArray('w3resource')
-// checkArray([1, 2, 'name'])
+// const student = {
+//     name : "David Rayy",
+//     class : "VI",
+//     rollno : 12 
+// }
+// // const student = "this is a string"
 
-// TASK 2
+// console.log(listProperties(student))
 
-const copyArray = (a) => {
-    // var b = a.slice()
-    // console.log(b)
-    const b = JSON.parse(JSON.stringify(a))
-    console.log(b)
-}
+// Task 2
 
-copyArray([1, 2, 3])
-copyArray([1, 2, [4, 0]])
+// const deleteProperty = (student) => {
+//     delete student.rollno
+//     console.log(student)
+// }
 
+// const student = {
+//     name: "Ankit Singh",
+//     class: "UKG",
+//     rollno: 5
+// }
 
-// TASK 3
+// deleteProperty(student)
 
-// const firstEle = (a, n) => {
-//     if(!a.length || n < 1) return []
-//     if(n == undefined) return a[0]
+// Task 3
 
-//     b = []
+// const getLength = (student) => {
+//     return Object.keys(student).length
+// }
 
-//     for(let i = 0; i < a.length && i < n; i++) {
-//         b.push(a[i])
+// const student = {
+//     name: "Ankit Singh",
+//     class: "UKG",
+//     rollno: 5
+// }
+
+// console.log(getLength(student))
+
+// Task 4
+
+// const readingStatus = (library) => {
+//     library.map(({ title, author, readingStatus }) => {
+//         console.log((readingStatus ? "Read " : "Not read ") + " " + title + " by " + author)
+//     })
+// }
+
+// const library = [ 
+//     {
+//         title: 'Bill Gates',
+//         author: 'The Road Ahead',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Steve Jobs',
+//         author: 'Walter Isaacson',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Mockingjay: The Final Book of The Hunger Games',
+//         author: 'Suzanne Collins',
+//         readingStatus: false
+//     }];
+
+// readingStatus(library)
+
+// Task 5
+
+// class volume {
+//     constructor(radius, height) {
+//         this.radius = radius
+//         this.height = height
 //     }
 
-//     return b
+//     getVolume = () => {
+//         return Math.PI * this.radius * this.radius * this.height
+//     }
 // }
-
-// console.log(firstEle([7, 9, 0, -2]))
-// console.log(firstEle([],3))
-// console.log(firstEle([7, 9, 0, -2],3))
-// console.log(firstEle([7, 9, 0, -2],6))
-// console.log(firstEle([7, 9, 0, -2],-3))
+// const obj = new volume(4, 6)
+// console.log("The volume is = " + obj.getVolume().toFixed(4))
 
 
+// Task 6
 
-// TASK 4
+const library = [ 
+    {
+        title: 'Bill Gates',
+        author: 'The Road Ahead',
+        libraryID: 1254
+    },
+    {
+        title: 'Steve Jobs',
+        author: 'Walter Isaacson',
+        libraryID: 4264
+    },
+    {
+        title: 'Mockingjay: The Final Book of The Hunger Games',
+        author: 'Suzanne Collins',
+        libraryID: 3245
+    }];
 
-// const joinArray = (a) => {
-//     // return JSON.stringify(a.join("+"))
-//     return JSON.stringify(a.join(","))
-// }
-
-// const color = ["Red", "Green", "White", "Black"]
-// console.log(joinArray(color))
-
-// TASK 5
-
-// const maxFreq = (a) => {
-//     let mp = {}
-//     let ele = a[0], freq = 0
-
-//     a.forEach((item, index) => {
-//         if(!mp[item]) mp[item] = 1
-//         else mp[item] += 1
-
-//         if(freq < mp[item]) {
-//             ele = item
-//             freq = mp[item]
-//         }
-//     })
-
-//     console.log(ele + " ( " + freq + " times )")
-// }
-
-// const a = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3, 3, 3, 3, 3]
-// maxFreq(a);
-
-
+library.sort((x, y) => {
+    return (x.libraryID > y.libraryID ? -1 : 1);
+})
+console.log(library)
 
