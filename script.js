@@ -1,73 +1,151 @@
+const questions = [
+    {
+        "name":"what is your name ?",
+        "answer" : "0",
+        "options":[
+              "Rajnikant",
+              "Bheem",
+              "Vilgax",
+              "Ben 10"
+          ]
+      },
+      {
+          "name":"what song genre u like ?",
+          "answer" : "2",
+          "options":[
+                "Hip Hop",
+                "Jazz",
+                "Rock",
+                "Dubstep"
+            ]
+      },
+      {
+        "name":"what is your favourite marvel character ?",
+        "answer" : "1",
+        "options":[
+              "Rajnikant",
+              "Iron Man",
+              "Vilgax",
+              "Ben 10"
+          ]
+      },
+      {
+        "name":"what is your favourite dc character ?",
+        "answer" : "0",
+        "options":[
+              "Superman",
+              "Iron Man",
+              "Vilgax",
+              "Ben 10"
+          ]
+      },
+      {
+        "name":"what is your fastest man alive ?",
+        "answer" : "2",
+        "options":[
+              "Rajnikant",
+              "Iron Man",
+              "Barry Allen",
+              "Ben 10"
+          ]
+      },
+      {
+        "name":"which is the closest galaxy to Milky Way ?",
+        "answer" : "3",
+        "options":[
+              "Rajnikant",
+              "Iron Man",
+              "Vilgax",
+              "Andromeda"
+          ]
+      },
+      {
+        "name":"what is the name of Superman's planet?",
+        "answer" : "0",
+        "options":[
+              "Krypton",
+              "Granite",
+              "Vilgax",
+              "Diamond"
+          ]
+      }
 
-document.addEventListener('DOMContentLoaded', () => {
-    let images = ['Doberman', 'GreatDane', 'Husky', 'Labrador', 'PitBull', 'Rottweiler', 'Doberman', 'GreatDane', 'Husky', 'Labrador', 'PitBull', 'Rottweiler']
+]
 
-    const shuffleArray = (arr) => {
-        arr.sort(() => Math.random() - 0.5)
+const ques = document.querySelector('.name')
+const opt = document.querySelectorAll('.lbl')
+const btn = document.querySelector('.btn')
+let i = 0
+let score = 0
+// console.log(ques, btn, opt, opt[0])
+
+
+let question = questions[i]
+ques.innerHTML = `${i + 1}. ${question.name}` 
+opt[0].innerHTML += "a. " + question.options[0]
+opt[1].innerHTML += "b. " + question.options[1]
+opt[2].innerHTML += "c. " + question.options[2]
+opt[3].innerHTML += "d. " + question.options[3]
+let flag = false
+
+btn.addEventListener('click', () => {
+    i += 1
+    if(i === questions.length) {
+        alert("Quiz Completed")
+        window.location.reload()
     }
+    let question = questions[i] // 
+    ques.innerHTML = `${i + 1}. ${question.name}`
+    opt[0].innerHTML = "a. " + question.options[0]
+    opt[1].innerHTML = "b. " + question.options[1]
+    opt[2].innerHTML = "c. " + question.options[2]
+    opt[3].innerHTML = "d. " + question.options[3]
 
-    shuffleArray(images)
+    let allInp = document.querySelectorAll('input')
+    Array.from(allInp).forEach(item => {
+        item.checked = false
+    })
 
-    const cards = document.querySelector('.cards')
-    const score = document.querySelector('.points')
-    let pickedCards = []
-    let pickedCardsId = []
-    let matchedCards = []
-    let clicked = false
-
-    const createCards = () => {
-        for(let i = 0; i < images.length; i++) {
-            // if(clicked) continue
-            // clicked = true
-            let card = document.createElement('img')
-            card.setAttribute('src', './assets/red.png')
-            card.setAttribute('data-index', i)
-            card.setAttribute('height', '160px')
-            card.setAttribute('width', '220px')
-            card.setAttribute('border', '1px solid #fff')
-            // card.setAttribute('margin', '5px')
-            card.addEventListener('click', flipTheCard)
-            cards.appendChild(card)
-            // clicked = false
-        }
-    }
-
-    const isMatching = () => {
-        const img = document.querySelectorAll('img')
-        const id1 = pickedCardsId[0], id2 = pickedCardsId[1]
-        if(pickedCards[0] == pickedCards[1]) {
-            // there is a match
-            img[id1].setAttribute('src', './assets/white.png')
-            img[id2].setAttribute('src', './assets/white.png')
-            matchedCards.push(pickedCards)
-        }
-        else {
-            img[id1].setAttribute('src', './assets/red.png')
-            img[id1].classList.toggle('flip1')
-            img[id2].setAttribute('src', './assets/red.png')
-            img[id2].classList.toggle('flip1')
-        }
-
-        pickedCards = []
-        pickedCardsId = []
-        score.textContent = matchedCards.length
-        if(matchedCards.length * 2 === images.length) {
-            score.textContent = 'Level Completed!'
-            window.location.reload()
-        }
-    }
-
-
-    function flipTheCard() {
-        const cardId = this.getAttribute('data-index')
-        pickedCards.push(images[cardId])
-        pickedCardsId.push(cardId)
-        this.classList.toggle('flip1')
-        this.setAttribute('src', `./assets/${images[cardId]}.jpg`)
-        if(pickedCards.length === 2) {
-            setTimeout(isMatching, 1500)
-        }
-    }
-
-    createCards()
 })
+
+
+
+
+document.querySelectorAll('input').forEach(item => {
+    item.addEventListener('click', event => {
+      let val = document.querySelector('input[name="option"]:checked').value
+      console.log(val)
+      if(val) {
+          let ans = item.getAttribute("id")
+          console.log(ans)
+          let question = questions[i]
+          if(question.answer === ans) {
+              score++
+              alert(`Correct answer. Your score is ${score}`)
+          }
+          else alert("Wrong answer")
+        // let inp = document.querySelector('input[name="option"]:checked')
+         // inp.setAttribute("value", "0")
+       }
+    })
+})
+
+// let allInp = document.getElementsByTagName("input");
+// // console.log(allInp)
+// for (let j = 0; j < allInp.length; i++) {
+//     if(allInp[j].checked) {
+//         let question = quesitons[i - 1]
+//         let ans = allInp[j].getAttribute("id")
+//         console.log(ans)
+//         if(question.answer === ans) alert("Correct Answer")
+//         else alert("Wrong Answer")
+//     }
+// }
+
+// if(flag === true) {
+//     i += 1
+//     flag = false
+// }
+
+
+
