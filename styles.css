@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    /* background: #efffff; */
 }
 
-h1.title {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%, -50%);
+h1 {
+    /* width: 100%; */
+    margin-top: 20px;
+    text-align: center;
 }
 
 .container {
@@ -18,38 +19,81 @@ h1.title {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.card {
+.todo-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.todo-text input {
+    outline: none;
+    height: 35px;
+    width: 510px;
+    padding: 0 10px;
+}
+
+
+.todo-text .add-btn {
+    background: none;
+    outline: none;
+    height: 35px;
+    width: 90px;
+    padding: 0 10px;
+    color: rgb(109, 73, 238);
+    background:rgb(53, 235, 235);
+    transition: 0.45s;
+    font-weight: bold;
+}
+
+.todo-text .add-btn:hover {
+    background: rgb(233, 221, 55);
+    color: rgb(235, 101, 48);
+}
+
+.todos {
+    width: 100%;
+    margin-top: 50px;
+    list-style-type: none;
+    text-align: left;
+}
+
+.todos li {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    height: 500px;
-    width: 500px;
-    flex-direction: column;
-    border: 1px solid rebeccapurple;
-    padding: 10px;
-    padding-left: 30px;
-    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border: 1px solid black;
+    padding-left: 10px;
+    color: #315a5c;
+    font-weight: bold;
 }
 
-.btn {
-    height: 40px;
-    width: 100px;
+.todos li:nth-of-type(4n) {
+    background:rgb(48, 213, 235);
+}
+
+.todos li:nth-of-type(4n + 1) {
+    background:rgb(235, 117, 71);
+}
+
+.todos li:nth-of-type(4n + 2) {
+    background:rgb(163, 235, 48);
+}
+
+.todos li:nth-of-type(4n + 3) {
+    background:rgb(182, 48, 235);
+}
+
+.todos li .icons button {
+    padding-right: 8px;
     background: none;
     outline: none;
     border: none;
-    background: rgb(70, 70, 233);
-    border-radius: 5px;
-    color: rgb(170, 252, 255);
-    /* font-weight: bolder; */
-    font-size: 1.2em;
-    letter-spacing: 1.3px;
 }
 
-.btn:hover {
-    background: rgb(11, 11, 175);
-    color: rgb(170, 252, 255);
-}
 
