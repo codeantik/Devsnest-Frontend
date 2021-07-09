@@ -1,5 +1,6 @@
 import './App.css';
 import List from './comps/List';
+import Board from './comps/Board';
 
 function App() {
   const data = [
@@ -13,17 +14,22 @@ function App() {
   ]
   return (
     <div className='container'>
-      <div className='instructions'>
-        <h1>Instructions</h1>
-        <ul>
-          <li>Build a container</li>
-          <li>Create a separate function and use it as a component</li>
-          <li>Pass props 'calorie and food' and call it main component</li>
-        </ul>
+      <div className='chess-board'>
+        <Board />
       </div>
-      <h1 className='list'>Calorie List</h1>
-      <div className='cal-list'>
-        <List data={ data } />
+      <div className='calorie-list'>
+        <div className='instructions'>
+          <h1>Instructions</h1>
+          <ul>
+            <li>Build a container</li>
+            <li>Create a separate function and use it as a component</li>
+            <li>Pass props 'calorie and food' and call it main component</li>
+          </ul>
+        </div>
+        <h1 className='list'>Calorie List</h1>
+        <div className='cal-list'>
+          <List data={ data } />
+        </div>
       </div>
     </div>
   );
