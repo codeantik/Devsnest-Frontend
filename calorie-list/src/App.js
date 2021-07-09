@@ -1,38 +1,30 @@
 import './App.css';
-import List from './comps/List';
-import Board from './comps/Board';
+import { Component } from 'react'
 
-function App() {
-  const data = [
-    { name: 'Pizza', cal: 56 },
-    { name: 'Burger', cal: 63 },
-    { name: 'Coke', cal: 34},
-    { name: 'Brownie', cal: 40},
-    { name: 'Fried Rice', cal: 84},
-    { name: 'Momos', cal: 97},
-    { name: 'Cake', cal: 20}
-  ]
-  return (
-    <div className='container'>
-      <div className='chess-board'>
-        <Board />
-      </div>
-      <div className='calorie-list'>
-        <div className='instructions'>
-          <h1>Instructions</h1>
-          <ul>
-            <li>Build a container</li>
-            <li>Create a separate function and use it as a component</li>
-            <li>Pass props 'calorie and food' and call it main component</li>
-          </ul>
-        </div>
-        <h1 className='list'>Calorie List</h1>
-        <div className='cal-list'>
-          <List data={ data } />
+class App extends Component {
+
+  constructor() {
+    super()
+    this.state =  {
+      counter: 0,
+      counter2: 0
+    }
+    console.log(this.state)
+  }
+
+
+  render() {
+    return (
+      <div className='container'>
+        <p> { this.state.counter } </p>
+        <div className='btns'>
+          <button onClick={() => { this.setState({ counter: this.state.counter + 1 })}}> Increment </button>
+          <button onClick={() => { this.setState({ counter: this.state.counter - 1 })}}> Decrement </button>
+          <button onClick={() => { this.setState({ counter: 0 })}}> Reset </button>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
