@@ -1,14 +1,18 @@
+import deleteIcon from '../assets/delete.svg'
 
-const List = ({ data }) => {
-    console.log(data)
+const List = ({ id, item, deleteItem }) => {
+    const { name, cal } = item
         return (
             <>
-            { data.map(({ name, cal }, index) => (
-                <div key={ index } className='cards' style={ { color: (index % 2 === 1 ? '#000' : '#999')} }>
-                    <h2>{ name }</h2>
-                    <p>This contains { cal } calories</p>
+                <div className='cards'>
+                    <div>
+                        <h2>{ name }</h2>
+                        <p>This contains { cal } calories</p>
+                    </div>
+                    <div>
+                        <img className='del-btn' src={deleteIcon} alt='img' onClick = { (e) => deleteItem(id) }/>
+                    </div>
                 </div>
-            ))}
             </>
         );
 }

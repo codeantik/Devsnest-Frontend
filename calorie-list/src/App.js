@@ -1,30 +1,34 @@
 import './App.css';
-import { Component } from 'react'
+import List from './comps/List';
+import { data } from './comps/Data';
+import { useState } from 'react';
 
-class App extends Component {
+function App() {
+  console.log(data)
+  const [items, setItems] = useState(data)
 
-  constructor() {
-    super()
-    this.state =  {
-      counter: 0,
-      counter2: 0
-    }
-    console.log(this.state)
+  const deleteItem = (id) => {
+    setItems(items.filter((item, idx) => id !== idx))
   }
 
-
-  render() {
-    return (
-      <div className='container'>
-        <p> { this.state.counter } </p>
-        <div className='btns'>
-          <button onClick={() => { this.setState({ counter: this.state.counter + 1 })}}> Increment </button>
-          <button onClick={() => { this.setState({ counter: this.state.counter - 1 })}}> Decrement </button>
-          <button onClick={() => { this.setState({ counter: 0 })}}> Reset </button>
-        </div>
+  return (
+    <div className='container'>
+      <h1 className='list'>Calorie List</h1>
+      <div className='calorie-list'>
+         {items.length
+            ? items.map((item, idx) => (
+              <List
+                key = { idx }
+                id = { idx }
+                item = { item }
+                deleteItem = { deleteItem }
+              />
+            ))
+            : (<h2 className='empty'>List is empty</h2>)
+          }
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
