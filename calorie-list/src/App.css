@@ -83,11 +83,46 @@ h1.list {
   align-items: center;
 }
 
-.calorie-list .cards .del-btn {
+.calorie-list .cards .del-btn, .calorie-list .cards .save-btn, .calorie-list .cards .edit-btn {
   cursor: pointer;
   transition: 0.45s;
 }
 
-.calorie-list .cards .del-btn:hover {
+.calorie-list .cards .del-btn:hover, .calorie-list .cards .save-btn:hover, .calorie-list .cards .edit-btn:hover{
   transform: scale(1.5);
 }
+
+.todo button {
+  background: none;
+  outline: none;
+  border: none;
+  height: 10px;
+  width: 30px;
+  position: absolute;
+}
+
+.todo form input {
+  padding-left: 4px;
+  margin-left: 2px;
+}
+
+.todo form label {
+  margin-left: 6px;
+}
+
+.todo button img {
+  position: relative;
+  transform: scale(1);
+  margin-left: 6px;
+  /* border: 1px solid black; */
+}
+
+.cards .icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 5px;
+  width: 100px;
+}
+
+
