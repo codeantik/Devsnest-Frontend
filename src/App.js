@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
+
+  const [memes, setMemes] = useState([]);
+
+  const getMemes = async () => {
+    try {
+      const data = await axios.get('https://meme-api.herokuapp.com/gimme/40')
+      const res = data.data.memes
+      setMemes(res)
+      console.log(res)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    getMemes()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <h1 className='heading'>Meme Generator</h1>
+      <div className='cards'>
+        {memes.map((meme, index) => (
+          <div className='card' key={ index }> 
+            <img src={ meme.preview[2] } alt={ meme.author }/>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
