@@ -9,7 +9,7 @@ function App() {
   const getMemes = async () => {
     try {
       const data = await axios.get('https://meme-api.herokuapp.com/gimme/40')
-      const res = data.data.memes
+      const res = await data.data.memes
       setMemes(res)
       console.log(res)
     } catch(err) {
