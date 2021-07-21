@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import logoIcon from './assets/logo.png'
 import { useFetch } from './hooks/useFetch';
 import Footer from './components/Footer';
+import { AuthContext } from './components/AuthContext';
 
 function App() {
 
@@ -29,20 +30,22 @@ function App() {
           </nav>
         </main>
         <Switch>
-          <Route path='/' exact>
-            <Home data={ data }/>
-          </Route>
-          <Route path='/details/:id'>
-            <Details data={ data }/>
-          </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/contact'>
-            <Contact />
-          </Route>
-          <Route render={() => <h1>Ooops... Page not found!!!</h1>} >
-          </Route>
+          <AuthContext>
+            <Route path='/' exact>
+              <Home data={ data }/>
+            </Route>
+            <Route path='/details/:id'>
+              <Details data={ data }/>
+            </Route>
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/contact'>
+              <Contact />
+            </Route>
+            {/* <Route render={() => <h1>Ooops... Page not found!!!</h1>} >
+            </Route> */}
+          </AuthContext>
         </Switch>
       </Router>
       <Footer />

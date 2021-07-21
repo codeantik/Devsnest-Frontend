@@ -237,3 +237,23 @@
     text-align: left;
   }
 }
+
+.auth {
+  min-height: 350px;
+  width: 100%;
+  text-align: center;
+  line-height: 350px;
+}
+
+.log {
+  display: flex;
+  margin: 5px auto 20px;
+  padding: 8px 15px;
+  outline: none;
+  background-color: none;
+  border: none;
+  background: salmon;
+  font-size: 1.2em;
+  color: #fafafa;
+  margin-top: 0;
+}
