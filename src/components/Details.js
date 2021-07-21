@@ -17,12 +17,12 @@ const Details = ({ data }) => {
                         <SingleDetail user= { user } key={ user.id}/>
                     ))
                 )}
-                <button className='log' onClick={ logIn.checkLog }>Log In</button>
+                <button className='log' onClick={ logIn.checkLog }>{ logIn.log ? "Log out" : "Log in" }</button>
             </div>
         ) : (
             <div className='auth'>
                 <h1>You're not authorised to acces the page</h1>
-                <button className='log' onClick={ logIn.checkLog }>Log In</button>
+                <button className='log' onClick={ logIn.checkLog }>{ logIn.log ? "Log out" : "Log in" }</button>
             </div>
         )
      );
