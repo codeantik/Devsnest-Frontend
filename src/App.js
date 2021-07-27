@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { userNameChange, emailChange } from './actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
+
+  const inputChange = useSelector(state => state.inputChange)
+  const dispatch = useDispatch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Redux Counter</h1>
+      <div className="input">
+        <h2>Input</h2>
+        <input 
+         type="text"
+         name='username' 
+         placeholder='Username' 
+         onChange={e => dispatch(userNameChange(e.target.value))}
+        />
+        <input 
+         type='text' 
+         name='email' 
+         placeholder='Email' 
+         onChange={e => dispatch(emailChange(e.target.value))}
+        />
+      </div>
+      <div className="data">
+        <h2>Data</h2>
+        <p>Username: {inputChange.username}</p>
+        <p>Email: {inputChange.email}</p>
+      </div>
     </div>
   );
 }
