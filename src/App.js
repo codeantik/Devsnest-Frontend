@@ -1,53 +1,35 @@
-import React, { useState } from 'react';
+import Form from "./components/Form";
+import Card from "./components/Card";
+import ToggleTheme from "./components/ToggleTheme";
+import { useSelector } from 'react-redux'
+import './App.css'
 
-import { fetchWeather } from './api/fetchWeather';
+function App() {
 
-import './App.css';
+  const theme = useSelector(state => state.theme)
 
-const App = () => {
+  const root = document.querySelector('#root')
+  if(theme) {
+    document.documentElement.classList.add('dark')
+    root.setAttribute('backgroundColor', '#000')
+    // document.documentElement.classList.add('dark-theme')
 
-    const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({});
-    
-    const search = async (e) => {
-        if(e.key === 'Enter') {
-            const response = await fetchWeather(query);
+  }
+  else {
+    document.documentElement.classList.remove('dark')
+    root.setAttribute('backgroundColor', '#fff')
+    // document.documentElement.classList.add('dark-theme')
 
-            setWeather(response);
-            setQuery('');
+  }
 
-            // console.log(response);
-        }
-    }
 
-    return (
-        <div className='main-container'>
-            <input
-            type='text'
-            className='search'
-            placeholder='Search...'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={search}
-            />
-            {weather.main && (
-                <div className='weather'>
-                    <div className='city-name'>
-                        <span>{weather.name}</span>
-                       <sup>{weather.sys.country}</sup>
-                    </div>
-                    <div className='city-temp'>
-                        <span>{Math.round(weather.main.temp)}</span>
-                        <span><sup>&deg;C</sup></span>
-                    </div>
-                    <div className='info'>
-                        <img className='city-icon' src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}  alt={weather.weather[0].description} />
-                        <p>{weather.weather[0].description}</p>
-                    </div>
-                </div>
-            )}
-         </div>
-    );
-};
+  return (
+    <div className='app container mx-auto dark:bg-black'>
+      <ToggleTheme />
+      <Form />
+      <Card />
+    </div>
+  );
+}
 
 export default App;
